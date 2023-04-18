@@ -8,13 +8,21 @@ IBM Cloudant Database is used for storing large amounts of data. As IBM Cloudant
 ---
 
 Step 1:
-Make a database in sqlite3 and import information.
+Make a database in Sqlite3 and import information.
 
-To make a database in sqlite3 first sqlite3 has to be installed using the following command:
-Linux:
+To make a database in Sqlite3 first sqlite3 has to be installed using the following command:
+
+Linux (Debain/Ubuntu):
 ```
 sudo apt install sqlite3
 ```
+
+
+Linux (CentOS / Fedora / RedHat):
+```
+yum install sqlite3
+```
+
 
 After this create a new database in sqlite3, I will be naming my database test.db
 
