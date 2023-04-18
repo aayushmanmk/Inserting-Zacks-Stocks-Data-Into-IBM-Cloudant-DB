@@ -107,3 +107,82 @@ Replace y with the filename you gave to the output of diffrank
 
 
 Step 4:
+Uploading to cloudant.
+
+The final step is to upload the data to cloudant. This can be done by creating an account on cloudant here:  https://cloud.ibm.com/login
+
+After creating an account search for cloudant and choose the first one:
+
+
+![image](https://user-images.githubusercontent.com/124895858/232711771-04aaa32f-6eb6-4e4f-800b-ca507aa6fa09.png)
+
+
+from here you should have a page looking like this:
+
+
+![image](https://user-images.githubusercontent.com/124895858/232711996-eddf2d3e-ea57-498d-a2b0-5762a118a321.png)
+
+
+
+After that choose "Service Credentials":
+
+
+![image](https://user-images.githubusercontent.com/124895858/232712209-11eaab7f-a4b2-41f5-9f63-5fc8c1fa3712.png)
+
+
+From here Click on "New Credential"
+
+
+![image](https://user-images.githubusercontent.com/124895858/232712318-49a2939a-721c-4ef1-bdf1-aee6f4964990.png)
+
+
+
+After getting a Credential Name the credential and then click on the arrow:
+
+
+![image](https://user-images.githubusercontent.com/124895858/232712465-bb8f2033-d2c9-4070-bcba-d79a79cfaf60.png)
+
+
+
+Copy the url given below on the page:
+
+
+![image](https://user-images.githubusercontent.com/124895858/232712693-9f9c9eea-5d5f-41ce-9e0b-2eb88bc332ec.png)
+
+
+
+When done go back to terminal and make an enviorment variable using the following command:
+
+```
+export URL=https://username:password@host
+```
+
+Create a command called "acurl" using this command:
+
+```
+alias acurl="curl -sgH 'Content-type: application/json'"
+```
+
+Then navigate we have to create a database before adding the information. To do this we use the Database webpage. To do this go back to your IBM webpage and press the "Launch Dashboard" button:
+
+
+
+![image](https://user-images.githubusercontent.com/124895858/232714377-615c95e1-6b59-4492-ba6b-d64ffc3b7ed8.png)
+
+
+
+Create a Database and Name it:
+
+
+![image](https://user-images.githubusercontent.com/124895858/232714556-fa6a8847-d3ba-4714-aaaa-44ebe7508217.png)
+
+
+Finally to import the information we using this command replacing database_name with your database name and data.json with your json file:
+
+
+```
+acurl -X POST -d@data.json $URL/database_name/_bulk_docs
+```
+
+
+Congratulations! You have successfully imported your stock data from https://zacks.com into IBM's Cloudant Database!
